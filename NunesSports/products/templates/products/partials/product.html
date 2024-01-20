@@ -1,0 +1,30 @@
+<!-- products/pages/registered_products.html -->
+<div class="container mt-5">
+  <div class="row border p-5 bg-secondary-subtle">
+    {% for product in products %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+          <div class="card-body">
+            <div class="container">
+            <p class="card-title text-center text-dark m-0 bg-success fs-3 text">{{ product.name }}</p>
+            <p class="card-text bg-dark-subtle m-0 p-1"><b>Código:</b> #{{ product.cod }}</p>
+            <p class="card-text bg-body-secondary m-0 p-1"><b>Preço:</b> R${{ product.price }}</p>
+            <p class="card-text bg-dark-subtle p-1"><b>Descrição:</b> {{ product.description }}</p>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <div class="row">
+              <div class="col-md-6">
+                <a class="btn btn-warning" href="{% url 'products:edit_product' product.id %}">Editar</a>
+              </div>
+              <div class="col-md-6">
+                <a class="btn btn-danger" href="{% url 'products:delete_product' product.id %}">Excluir</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
